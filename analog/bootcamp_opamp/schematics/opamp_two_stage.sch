@@ -5,37 +5,43 @@ V {}
 S {}
 E {}
 N 190 60 270 60 {lab=ibias}
-N 190 300 560 300 {VSS
-lab=ibias}
-N 630 270 630 300 {lab=ibias}
-N 630 160 630 210 {lab=#net1}
-N 630 160 710 160 {lab=#net1}
-N 410 270 410 300 {lab=ibias}
-N 340 240 370 240 {lab=#net2}
-N 280 150 280 210 {lab=#net2}
-N 280 150 350 150 {lab=#net2}
-N 350 150 350 240 {lab=#net2}
-N 280 90 450 90 {lab=#net3}
-N 410 160 410 210 {lab=#net4}
-N 410 160 450 160 {lab=#net4}
-N 450 150 450 160 {lab=#net4}
-N 410 190 440 190 {lab=#net4}
-N 560 300 630 300 {lab=ibias}
-N 500 190 520 190 {lab=#net5}
-N 580 190 630 190 {lab=#net1}
-N 630 60 630 160 {lab=#net1}
-N 560 60 630 60 {lab=#net1}
+N 630 270 630 300 {lab=VSS}
+N 630 160 630 210 {lab=VOUT}
+N 630 160 710 160 {lab=VOUT}
+N 410 270 410 300 {lab=VSS}
+N 280 150 350 150 {lab=#net1}
+N 350 150 350 240 {lab=#net1}
+N 280 90 450 90 {lab=#net2}
+N 410 160 410 210 {lab=x}
+N 410 160 450 160 {lab=x}
+N 450 150 450 160 {lab=x}
+N 410 190 440 190 {lab=x}
+N 560 300 630 300 {lab=VSS}
+N 500 190 520 190 {lab=#net3}
+N 580 190 630 190 {lab=VOUT}
+N 630 60 630 160 {lab=VOUT}
+N 560 60 630 60 {lab=VOUT}
 N 190 -0 330 -0 {lab=VDD}
 N 330 -0 560 0 {lab=VDD}
-N 300 270 300 300 {lab=ibias}
-N 330 60 330 90 {lab=#net3}
+N 300 270 300 300 {lab=VSS}
+N 330 60 330 90 {lab=#net2}
 N 290 30 520 30 {lab=ibias}
 N 290 30 290 60 {lab=ibias}
 N 270 60 290 60 {lab=ibias}
-N 280 220 300 220 {lab=#net2}
-N 280 210 280 220 {lab=#net2}
-N 190 60 190 150 {lab=ibias}
-N 190 150 190 300 {lab=ibias}
+N 150 30 150 60 {lab=ibias}
+N 150 60 190 60 {lab=ibias}
+N 410 300 560 300 {lab=VSS}
+N 370 300 410 300 {lab=VSS}
+N 300 300 370 300 {lab=VSS}
+N 300 180 300 220 {lab=#net1}
+N 280 150 280 180 {lab=#net1}
+N 280 180 300 180 {lab=#net1}
+N 260 220 260 250 {lab=#net1}
+N 260 220 300 220 {lab=#net1}
+N 350 240 370 240 {lab=#net1}
+N 580 240 590 240 {lab=x}
+N 400 190 410 190 {lab=x}
+N 470 210 470 300 {lab=VSS}
 C {sky130_fd_pr/pfet3_01v8.sym} 170 30 0 0 {name=M3
 L=0.15
 W=1
@@ -163,10 +169,21 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {devices/ipin.sym} 190 150 0 0 {name=p1 lab=ibias
-}
 C {devices/ipin.sym} 400 0 1 0 {name=p2 lab=VDD
 }
 C {devices/ipin.sym} 370 300 3 0 {name=p3 lab=VSS
 
 }
+C {devices/ipin.sym} 710 160 2 0 {name=p4 lab=VOUT
+}
+C {devices/ipin.sym} 410 120 0 0 {name=p5 lab=VIN_P
+
+}
+C {devices/ipin.sym} 240 120 0 0 {name=p6 lab=VIN_N
+
+}
+C {devices/ipin.sym} 190 60 3 0 {name=p1 lab=ibias
+}
+C {devices/lab_pin.sym} 590 240 0 0 {name=p7 sig_type=std_logic lab=x
+}
+C {devices/lab_pin.sym} 410 190 0 0 {name=p8 sig_type=std_logic lab=x}

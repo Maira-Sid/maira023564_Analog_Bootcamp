@@ -4,8 +4,8 @@
 }:
 let
   edaPkgs = eda.packages.${pkgs.system};
-  cktimgPkg = edaPkgs.cktimg;
-  spicerackPkg = edaPkgs.spicerack;
+#   cktimgPkg = edaPkgs.cktimg;
+#   spicerackPkg = edaPkgs.spicerack;
   # The shared-library build of ngspice. The Rust analog crates link against it, which
   # plain `ngspice` (a binary only) cannot satisfy.
   ngspiceShared = pkgs.libngspice;
@@ -23,11 +23,11 @@ in
     pkgs.ngspice
     pkgs.magic-vlsi
 
-    # Netlist-first flow. cktimgPkg ships `cktimg-json`, which .flows/tools/
-    # cktimg_to_xschem.py shells out to; spicerackPkg is a Python package and is reached
+#     # Netlist-first flow. cktimgPkg ships `cktimg-json`, which .flows/tools/
+#     # cktimg_to_xschem.py shells out to; spicerackPkg is a Python package and is reached
     # through PYTHONPATH below rather than by landing a binary on PATH.
-    cktimgPkg
-    spicerackPkg
+#     cktimgPkg
+#     spicerackPkg
 
     # Rust toolchain from nixpkgs
     pkgs.cargo
@@ -57,7 +57,6 @@ in
     # inherit system site-packages, so PYTHONPATH is what makes `import spicerack`
     # resolve inside it. Prepended, not appended: the venv must not shadow it with a
     # half-built copy from a previous `maturin develop`.
-    export PYTHONPATH="${spicerackPkg}/${pkgs.python312.sitePackages}:$PYTHONPATH"
 
     pip install maturin pytest
     for pkg in analog/library/dep_library/gmid analog/library/dep_library/UWASIC-ALG; do
